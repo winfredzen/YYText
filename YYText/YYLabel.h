@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  The YYLabel class implements a read-only text view.
- 
+ YYLabel只读的text view
  @discussion The API and behavior is similar to UILabel, but provides more features:
  
  * It supports asynchronous layout and rendering (to avoid blocking UI thread).

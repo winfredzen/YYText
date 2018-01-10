@@ -55,7 +55,7 @@
         [tagText yy_appendString:@"   "];
         tagText.yy_font = font;
         tagText.yy_color = [UIColor whiteColor];
-        [tagText yy_setTextBinding:[YYTextBinding bindingWithDeleteConfirm:NO] range:tagText.yy_rangeOfAll];
+        [tagText yy_setTextBinding:[YYTextBinding bindingWithDeleteConfirm:NO] range:tagText.yy_rangeOfAll];//文字绑定
         
         YYTextBorder *border = [YYTextBorder new];
         border.strokeWidth = 1.5;
@@ -76,11 +76,12 @@
     [text appendAttributedString:text]; // repeat for test
     
     YYTextView *textView = [YYTextView new];
+    textView.textColor = [UIColor redColor];
     textView.attributedText = text;
     textView.size = self.view.size;
     textView.textContainerInset = UIEdgeInsetsMake(10 + 64, 10, 10, 10);
-    textView.allowsCopyAttributedString = YES;
-    textView.allowsPasteAttributedString = YES;
+    textView.allowsCopyAttributedString = YES;//允许粘贴
+    textView.allowsPasteAttributedString = YES;//允许复制
     textView.delegate = self;
     if (kiOS7Later) {
         textView.keyboardDismissMode = UIScrollViewKeyboardDismissModeInteractive;
@@ -91,7 +92,7 @@
     textView.selectedRange = NSMakeRange(text.length, 0);
     [self.view addSubview:textView];
     self.textView = textView;
-    
+    //弹出键盘
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [textView becomeFirstResponder];
     });
@@ -106,7 +107,7 @@
 }
 
 #pragma mark text view
-
+//在此处创建buttonItem
 - (void)textViewDidBeginEditing:(YYTextView *)textView {
     UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                 target:self

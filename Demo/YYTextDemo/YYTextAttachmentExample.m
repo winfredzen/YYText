@@ -36,7 +36,7 @@
         
         UIImage *image = [UIImage imageNamed:@"dribbble64_imageio"];
         image = [UIImage imageWithCGImage:image.CGImage scale:2 orientation:UIImageOrientationUp];
-        
+        //附加图片
         NSMutableAttributedString *attachText = [NSMutableAttributedString yy_attachmentStringWithContent:image contentMode:UIViewContentModeCenter attachmentSize:image.size alignToFont:font alignment:YYTextVerticalAlignmentCenter];
         [text appendAttributedString:attachText];
         [text appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n" attributes:nil]];

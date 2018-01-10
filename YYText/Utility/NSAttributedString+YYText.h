@@ -750,7 +750,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  The font of the text.
- 
+ 字体
  @discussion Default is Helvetica (Neue) 12.
  @discussion Set this property applies to the entire text string.
              Get this property returns the first character's attribute.
@@ -777,7 +777,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  The foreground color.
- 
+ 前景颜色
  @discussion Default is Black.
  @discussion Set this property applies to the entire text string.
              Get this property returns the first character's attribute.
@@ -857,7 +857,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  The underline style.
- 
+ 下划线样式
  @discussion Default value is NSUnderlineStyleNone (no underline).
  @discussion Set this property applies to the entire text string.
              Get this property returns the first character's attribute.
@@ -1208,7 +1208,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  The text shadow.
- 
+ text的阴影
  @discussion Default value is nil (no shadow).
  @discussion Set this property applies to the entire text string.
              Get this property returns the first character's attribute.
