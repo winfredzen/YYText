@@ -483,6 +483,7 @@
 				TargetAttributes = {
 					D97539251BD2896100C6F4B8 = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = CEW846XYSB;
 					};
 				};
 			};
@@ -491,6 +492,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -693,6 +695,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMPRESS_PNG_FILES = NO;
+				DEVELOPMENT_TEAM = CEW846XYSB;
 				INFOPLIST_FILE = YYTextDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -707,6 +710,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMPRESS_PNG_FILES = NO;
+				DEVELOPMENT_TEAM = CEW846XYSB;
 				INFOPLIST_FILE = YYTextDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

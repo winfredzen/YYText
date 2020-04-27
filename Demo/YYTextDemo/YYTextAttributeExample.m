@@ -32,8 +32,8 @@
         shadow.offset = CGSizeMake(0, 1);
         shadow.radius = 5;
         one.yy_textShadow = shadow;
-        [text appendAttributedString:one];
-        [text appendAttributedString:[self padding]];
+//        [text appendAttributedString:one];
+//        [text appendAttributedString:[self padding]];
     }
     
     {
@@ -45,8 +45,8 @@
         shadow.offset = CGSizeMake(0, 1);
         shadow.radius = 1;
         one.yy_textInnerShadow = shadow;//内阴影
-        [text appendAttributedString:one];
-        [text appendAttributedString:[self padding]];
+//        [text appendAttributedString:one];
+//        [text appendAttributedString:[self padding]];
     }
     
     {
@@ -70,9 +70,9 @@
         innerShadow.offset = CGSizeMake(0, 1);
         innerShadow.radius = 1;
         one.yy_textInnerShadow = innerShadow;
-        
-        [text appendAttributedString:one];
-        [text appendAttributedString:[self padding]];
+//
+//        [text appendAttributedString:one];
+//        [text appendAttributedString:[self padding]];
     }
     
     {
@@ -97,8 +97,8 @@
         }];
         one.yy_color = [UIColor colorWithPatternImage:background];//pattern
         
-        [text appendAttributedString:one];
-        [text appendAttributedString:[self padding]];
+//        [text appendAttributedString:one];
+//        [text appendAttributedString:[self padding]];
     }
     
     {
@@ -114,12 +114,12 @@
         border.insets = UIEdgeInsetsMake(0, -4, 0, -4);
         one.yy_textBackgroundBorder = border;
         
-        [text appendAttributedString:[self padding]];
-        [text appendAttributedString:one];
-        [text appendAttributedString:[self padding]];
-        [text appendAttributedString:[self padding]];
-        [text appendAttributedString:[self padding]];
-        [text appendAttributedString:[self padding]];
+//        [text appendAttributedString:[self padding]];
+//        [text appendAttributedString:one];
+//        [text appendAttributedString:[self padding]];
+//        [text appendAttributedString:[self padding]];
+//        [text appendAttributedString:[self padding]];
+//        [text appendAttributedString:[self padding]];
     }
     
     {
@@ -146,13 +146,44 @@
         
         /// 2. or you can use the convenience method
         [one yy_setTextHighlightRange:one.yy_rangeOfAll
-                                color:[UIColor colorWithRed:0.093 green:0.492 blue:1.000 alpha:1.000]
-                      backgroundColor:[UIColor colorWithWhite:0.000 alpha:0.220]
+                                color:[UIColor colorWithRed:0.093 green:0.492 blue:1.000 alpha:1.000] //文字颜色
+                      backgroundColor:[UIColor colorWithWhite:0.000 alpha:0.220] //点击时背景的颜色
                             tapAction:^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect){
                                 [_self showMessage:[NSString stringWithFormat:@"Tap: %@",[text.string substringWithRange:range]]];
                             }];
         
-        [text appendAttributedString:one];
+//        [text appendAttributedString:one];
+//        [text appendAttributedString:[self padding]];
+        
+        UIFont *font = [UIFont systemFontOfSize:12];
+        NSMutableAttributedString *testText = [NSMutableAttributedString new];
+        
+        NSMutableAttributedString *attachment = nil;
+        UIImage *image = [UIImage imageNamed:@"check"];
+        attachment = [NSMutableAttributedString yy_attachmentStringWithContent:image
+                                                                   contentMode:UIViewContentModeCenter
+                                                                attachmentSize:CGSizeMake(15, 15)
+                                                                   alignToFont:font
+                                                                     alignment:YYTextVerticalAlignmentCenter];
+        [testText appendAttributedString: attachment];
+        
+        NSString *string = @" 已了解并同意《遵守实验室须知》";
+        NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:string];
+        attrString.yy_font = font;
+        attrString.yy_color = [UIColor colorWithHexString:@"#666666"];
+        
+        NSRange range = [string rangeOfString:@"《遵守实验室须知》"];
+        [attrString yy_setColor:[UIColor colorWithHexString:@"#19ADA9"] range:range];
+        
+        [attrString yy_setTextHighlightRange:range
+                                       color:[UIColor colorWithHexString:@"#19ADA9"]
+                             backgroundColor:[UIColor blueColor]
+                                   tapAction:^(UIView * _Nonnull containerView, NSAttributedString * _Nonnull text, NSRange range, CGRect rect) {
+            [_self showMessage:[NSString stringWithFormat:@"Tap: %@",[text.string substringWithRange:range]]];
+        }];
+        [testText appendAttributedString: attrString];
+        
+        [text appendAttributedString:testText];
         [text appendAttributedString:[self padding]];
     }
     
@@ -182,8 +213,8 @@
         };
         [one yy_setTextHighlight:highlight range:one.yy_rangeOfAll];
         
-        [text appendAttributedString:one];
-        [text appendAttributedString:[self padding]];
+//        [text appendAttributedString:one];
+//        [text appendAttributedString:[self padding]];
     }
     
     {
@@ -218,7 +249,7 @@
         [highlight setInnerShadow:innerShadow0];
         [one yy_setTextHighlight:highlight range:one.yy_rangeOfAll];
         
-        [text appendAttributedString:one];
+//        [text appendAttributedString:one];
     }
     
     //已YYLabel来显示
@@ -230,7 +261,7 @@
     label.textAlignment = NSTextAlignmentCenter;
     label.textVerticalAlignment = YYTextVerticalAlignmentCenter;
     label.numberOfLines = 0;
-    label.backgroundColor = [UIColor orangeColor]; //[UIColor colorWithWhite:0.933 alpha:1.000];
+    label.backgroundColor = [UIColor colorWithWhite:0.933 alpha:1.000];//[UIColor orangeColor];
     [self.view addSubview:label];
     
     /*
@@ -244,6 +275,12 @@
     label.highlightTapAction = ^(UIView *containerView, NSAttributedString *text, NSRange range, CGRect rect) {
         [_self showMessage:[NSString stringWithFormat:@"Tap: %@",[text.string substringWithRange:range]]];
     };
+    
+    //大小
+    CGSize size = CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX);
+    YYTextLayout *layout = [YYTextLayout layoutWithContainerSize:size text:text];
+    NSLog(@"textBoundingSize = %@", NSStringFromCGSize(layout.textBoundingSize));
+    NSLog(@"textBoundingRect = %@", NSStringFromCGRect(layout.textBoundingRect));
 }
 
 - (NSAttributedString *)padding {
